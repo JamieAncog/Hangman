@@ -1,7 +1,7 @@
 import random
 print("Hangman:\nKeep guessing until you win!\nDon't make over 26 guesses\n")
-words = ["fox", "tin", "hat", "bug", "lid", "ice", "art", "fly", "ore", "red", "kelp", "such", "clam", "trip", "ship", "swap", "able", "quit", "exit", "poem", "upset", "snake", "laugh", "venom", "stone", "ocean", "after", "share", "could", "bring"]
-word = "butterfly"#random.choice(words)
+words = ["butterfly", "ocean", "windmill", "castle", "orchestra", "imagination", "wallpaper"]
+word = random.choice(words)
 length = len(word)
 attempts = 0
 spaces = ["__"] * length
@@ -10,8 +10,9 @@ while "__" in spaces and attempts < 26:
 	attempts += 1
 	guess = input("letter: ")
 	if guess in word:
-		place = word.index(guess)
-		spaces[place] = guess
+		for n in range(len(word)):
+			if word[n] == guess:
+				spaces[n] = guess
 	print(" ".join(spaces))
 if "__" in spaces:
 	print("\nword = " + word + "\n\nYou Lose!")
